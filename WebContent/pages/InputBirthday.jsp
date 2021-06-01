@@ -103,14 +103,12 @@ prefix属性により、struts-html.tldを使用する場合は、タグにhtmlを指定する。--%>
 
 <%--エラーメッセージの処理 --%>
 <div class="errorMessage">
-<%-- <html:messages>タグでエラーメッセージを表示します。エラーメッセージを表示するときはmessage属性をfalseにします。 --%>
-<html:messages id="msg" message="false">
-    <%-- filter属性をfalseにすることでメッセージにHTMLタグを利用できます。trueにするとHTMLタグがあった場合置換文字（<、>など）に変換します。 --%>
-    <bean:write name="msg" ignore="true" filter="false"/>
-</html:messages>
+
+<html:errors property="birthday"/>
+
 </div>
 <html:form action="/fortuneResults" focus="birthday"> <%-- (4) <html:form>タグはHTMLの<form>タグとほぼ同様の振舞いをするタグ。action属性はsubmitボタンが押された時の遷移先を指定。focus属性はこのJSPファイルが開かれた時にどのフォーム項目を初めに選択可能にするかを指定する。--%>
-	<html:text property="birthday" size="8" /> <%-- (5) <html:text>タグはHTMLの<input type=text>タグとほぼ同様の振舞いをするタグ。property属性はHTMLのname属性、size属性はHTMLのsize属性と同様の働きをする。--%>
+	<html:text property="birthday" size="8"/> <%-- (5) <html:text>タグはHTMLの<input type=text>タグとほぼ同様の振舞いをするタグ。property属性はHTMLのname属性、size属性はHTMLのsize属性と同様の働きをする。--%>
 	<div class = "button">
 	<html:submit property="submit" value="占う"/>
 	</div>
