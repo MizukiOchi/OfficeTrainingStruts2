@@ -1,10 +1,17 @@
 package struts;
 
-import org.apache.struts.validator.ValidatorForm;
+import java.text.SimpleDateFormat;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
 
 //Validatorを使用する場合はValidatorFormクラスを継承する。
 //その他は一般的なアクション･フォームBeanの作成方法と変わらない。
-public final class OmikujiResultsForm extends ValidatorForm {
+public final class OmikujiResultsForm extends ActionForm {
 
 	private String birthday;
 	private String fortuneName;
@@ -19,23 +26,23 @@ public final class OmikujiResultsForm extends ValidatorForm {
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
-	//
-	//	 public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
-	//
-	//ActionErrors errors = new ActionErrors();
-	//
-	//if (birthday.length() != 8) {
-	//	errors.add("birthday",new ActionMessage("errors.length"));//エラー生成
-	//}
-	//SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-	//format.setLenient(false);
-	//try {
-	//	format.parse(birthday);
-	//} catch (Exception e) {
-	//	errors.add("birthday",new ActionMessage("errors.date"));//エラー生成
-	//}
-	//return errors;
-	//}
+
+		 public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
+
+	ActionErrors errors = new ActionErrors();
+
+	if (birthday.length() != 8) {
+		errors.add("birthday",new ActionMessage("errors.length"));//エラー生成
+	}
+	SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+	format.setLenient(false);
+	try {
+		format.parse(birthday);
+	} catch (Exception e) {
+		errors.add("birthday",new ActionMessage("errors.date"));//エラー生成
+	}
+	return errors;
+	}
 
 	public String getFortuneName() {
 		return fortuneName;

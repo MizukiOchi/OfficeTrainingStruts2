@@ -15,7 +15,7 @@
 <!--validatorを使用するという宣言をする必要がある。
 ※デフォルトでは、「validate="false"」となっているため、validatorと使用する時のみ「validate="true"」と指定する必要がある！！！ -->
 <action-mappings>
-	<action path="/fortuneResults" type="struts.BirthdayAction" name="OmikujiResultsForm" scope="request" validate="true" input="/pages/InputBirthday.jsp">
+	<action path="/fortuneResults" type="struts.BirthdayAction" name="OmikujiResultsForm" scope="request" input="/pages/InputBirthday.jsp">
 		<forward name="success" path="/pages/OmikujiResults.jsp"/>
 		<forward name="fail" path="/pages/InputBirthday.jsp"/>
 	</action>
@@ -33,12 +33,6 @@
 
 <!-- (4)メッセージ・リソース・ファイルの指定 -->
 <message-resources parameter="MessageResources"/>
-
- <!-- Validatorの指定。
- プロパティpathnamesの値にvalidator-rules.xmlとvalidation.xmlを指定 -->
-    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-        <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
-    </plug-in>
 
 </struts-config>
 
